@@ -1,7 +1,6 @@
 import numpy as np
 import cv2
 
-from typing import List, Optional
 
 def _l2_normalize(embedding):
     if embedding is None:
@@ -18,7 +17,7 @@ def _cosine_similarity(emb1, emb2):
     denom = (np.linalg.norm(a) * np.linalg.norm(b)) + 1e-12
     return float(np.dot(a, b) / denom)
 
-def _median_embedding(emb_list: List[np.ndarray]) -> Optional[np.ndarray]:
+def _median_embedding(emb_list):
     if not emb_list:
         return None
     arr = np.stack([np.asarray(e, dtype=np.float32).flatten() for e in emb_list], axis=0)
